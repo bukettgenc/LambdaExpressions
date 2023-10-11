@@ -1,8 +1,19 @@
 package src;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Driver {
+	public static void cinsiyeteGoreFiltrele(List<Kisi> kisiler, Kisi.Cinsiyet cinsiyet) {
+		for (int i = 0; i < kisiler.size(); i++) {
+			Kisi kisi = kisiler.get(0);
+			if (kisi.getCinsiyet().equals(cinsiyet)) {
+				System.out.println(kisi);
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 //		SayiOlustur sayiOlustur=new SayiOlustur() {
 //			
@@ -25,17 +36,23 @@ public class Driver {
 		Merhaba2 merhaba2 = (isim) -> "Selam " + isim;
 		System.out.println(merhaba2.selam("Buket"));
 
-		Topla topla = (sayi1, sayi2) -> sayi1 + sayi2; 
-		System.out.println(topla.topla(3,5));
-		
-		Kisi kisi1=new Kisi("Ali can ",LocalDate.now(),"alican@example.com");
-		Kisi kisi2=new Kisi("Seyhan çalışkan ",LocalDate.now(),"seyhancaliskan.com");
-		Kisi kisi3=new Kisi("Tuğrul yılmaz ",LocalDate.now(),"tugrulyilmaz.com");
-		
-		//Burada yazılan toString methodu çalışır
-		System.out.println(kisi1);
-		System.out.println(kisi2);
-		System.out.println(kisi3);
-		
+		Topla topla = (sayi1, sayi2) -> sayi1 + sayi2;
+		System.out.println(topla.topla(3, 5));
+
+		Kisi kisi1 = new Kisi("Ali can ", LocalDate.now(), "alican@example.com", Kisi.Cinsiyet.ERKEK);
+		Kisi kisi2 = new Kisi("Seyhan çalışkan ", LocalDate.now(), "seyhancaliskan.com", Kisi.Cinsiyet.KADIN);
+		Kisi kisi3 = new Kisi("Tuğrul yılmaz ", LocalDate.now(), "tugrulyilmaz.com", Kisi.Cinsiyet.ERKEK);
+
+		ArrayList<Kisi> kisiler = new ArrayList<Kisi>();
+		kisiler.add(kisi1);
+		kisiler.add(kisi2);
+		kisiler.add(kisi3);
+
+		// Burada yazılan toString methodu çalışır
+//		System.out.println(kisi1);
+//		System.out.println(kisi2);
+//		System.out.println(kisi3);
+		cinsiyeteGoreFiltrele(kisiler, Kisi.Cinsiyet.ERKEK);
+
 	}
 }

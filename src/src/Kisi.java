@@ -4,18 +4,23 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Kisi implements Serializable {
+	public enum Cinsiyet {
+		ERKEK, KADIN;
+	}
 
 	private String isim;
 	private LocalDate dogumTarihi;
 	private String emailAdresi;
+	private Cinsiyet cinsiyet;
 
 	public Kisi() {
 	}
 
-	public Kisi(String isim, LocalDate dogumTarihi, String emailAdresi) {
+	public Kisi(String isim, LocalDate dogumTarihi, String emailAdresi, Cinsiyet cinsiyet) {
 		this.isim = isim;
 		this.dogumTarihi = dogumTarihi;
 		this.emailAdresi = emailAdresi;
+		this.cinsiyet = cinsiyet;
 	}
 
 	public String getIsim() {
@@ -42,6 +47,14 @@ public class Kisi implements Serializable {
 		this.emailAdresi = emailAdresi;
 	}
 
+	public Cinsiyet getCinsiyet() {
+		return cinsiyet;
+	}
+
+	public void setCinsiyet(Cinsiyet cinsiyet) {
+		this.cinsiyet = cinsiyet;
+	}
+
 	@Override
 	public int hashCode() {
 		return isim.hashCode();
@@ -50,7 +63,7 @@ public class Kisi implements Serializable {
 	@Override
 	public boolean equals(Object o) {
 		Kisi kisi = (Kisi) o;
-		return this.isim.equals(kisi.isim);
+		return this.cinsiyet.equals(kisi.cinsiyet);
 	}
 
 	@Override
