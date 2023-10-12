@@ -12,6 +12,7 @@ public class Kisi implements Serializable {
 	private LocalDate dogumTarihi;
 	private String emailAdresi;
 	private Cinsiyet cinsiyet;
+	private int yas;
 
 	public Kisi() {
 	}
@@ -55,6 +56,14 @@ public class Kisi implements Serializable {
 		this.cinsiyet = cinsiyet;
 	}
 
+	public int getYas() {
+		return LocalDate.now().getYear() - dogumTarihi.getYear();
+	}
+
+	public void setYas(int yas) {
+		this.yas = yas;
+	}
+
 	@Override
 	public int hashCode() {
 		return isim.hashCode();
@@ -68,6 +77,6 @@ public class Kisi implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Isim:" + isim + "Doğum Tarihi:" + dogumTarihi.toString();
+		return "Isim:" + isim + "Doğum Tarihi:" + dogumTarihi.toString()+" Yaş: "+ getYas();
 	}
 }
